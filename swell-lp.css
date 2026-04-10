@@ -1,0 +1,1694 @@
+/*
+ * SWELL LP Design System - Standalone CSS
+ * SWELLテーマのLP向けデザインコンポーネントを再現
+ * WordPress/SWELL依存なし
+ */
+
+/* ============================================
+   CSS Custom Properties (SWELL Color Variables)
+   ============================================ */
+:root {
+  /* Main colors */
+  --color_main: #0367bf;
+  --color_text: #333;
+  --color_link: #1176d4;
+  --color_htag: #1e73be;
+  --color_bg: #ffffff;
+  --color_content_bg: #fff;
+  --color_border: hsla(0, 0%, 78%, .5);
+  --color_border--table: #dcdcdc;
+  --color_gray: hsla(0, 0%, 78%, .15);
+  --color_main_thin: rgba(4, 129, 239, 0.05);
+  --color_main_dark: rgba(2, 77, 143, 1);
+
+  /* Deep colors (accent) */
+  --color_deep01: #e44141;
+  --color_deep02: #3d79d5;
+  --color_deep03: #457d30;
+  --color_deep04: #f09f4d;
+
+  /* Pale colors (backgrounds) */
+  --color_pale01: #fff2f0;
+  --color_pale02: #f3f8fd;
+  --color_pale03: #f1f9ee;
+  --color_pale04: #fdf9ee;
+
+  /* Marker colors */
+  --color_mark_blue: #99d6ff;
+  --color_mark_green: #ff8ee8;
+  --color_mark_yellow: #ffef42;
+  --color_mark_orange: #ffaabe;
+
+  /* List icon colors */
+  --color_list_check: #0367bf;
+  --color_list_num: #0367bf;
+  --color_list_good: #86dd7b;
+  --color_list_triangle: #f4e03a;
+  --color_list_bad: #f36060;
+
+  /* Gradient */
+  --color_gradient1: #d8ffff;
+  --color_gradient2: #87e7ff;
+
+  /* SWL system variables — スマホファースト */
+  --swl-fz--root: 3.6vw;          /* スマホ: ビューポート比例 */
+  --swl-fz--content: 15px;        /* スマホ: やや小さめで読みやすく */
+  --swl-fz--xs: .75em;
+  --swl-fz--small: .9em;
+  --swl-fz--normal: 1rem;
+  --swl-fz--medium: 1.1em;
+  --swl-fz--large: 1.25em;
+  --swl-fz--huge: 1.6em;
+  --swl-block-margin: 1.5em;      /* スマホ: ブロック間隔を少し詰める */
+  --swl-letter_spacing: .025em;
+  --swl-box_shadow: 0 2px 4px rgba(0,0,0,.05), 0 4px 4px -4px rgba(0,0,0,.1);
+  --swl-img_shadow: 0 2px 8px rgba(0,0,0,.1), 0 4px 8px -4px rgba(0,0,0,.2);
+  --swl-btn_shadow: 0 2px 2px rgba(0,0,0,.1), 0 4px 8px -4px rgba(0,0,0,.2);
+  --swl-text_color--black: #333;
+  --swl-text_color--white: #fff;
+  --swl-font_family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", YuGothic, Meiryo, sans-serif;
+  --swl-font_weight: 500;
+  --swl-list-padding--left: 1.25em;  /* スマホ: リスト左パディング少し詰める */
+  --swl-list-padding--has_bg: .8em .8em .8em 1.5em;
+  --swl-pad_lp: 12px;             /* スマホ: LP左右パディング */
+  --swl-pad_lp_post: 12px;
+  --swl-lp_content_width: 700px;  /* PC時の最大幅（スマホでは100%） */
+
+  /* Button */
+  --the-btn-radius: 5px;
+
+  /* タッチ操作用 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* タブレット */
+@media (min-width: 600px) {
+  :root {
+    --swl-fz--content: 16px;
+    --swl-pad_lp: 16px;
+    --swl-pad_lp_post: 16px;
+    --swl-block-margin: 2em;
+  }
+}
+
+/* PC */
+@media (min-width: 960px) {
+  :root {
+    --swl-fz--root: 16px;
+  }
+}
+
+
+/* ============================================
+   Base / Reset
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  word-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--color_bg);
+  color: var(--color_text);
+  font-family: var(--swl-font_family);
+  font-size: 1rem;
+  font-weight: var(--swl-font_weight);
+  line-height: 1.6;
+  max-width: 100%;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  overflow-x: clip;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--color_link);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure {
+  margin: 0;
+}
+
+ul, ol {
+  padding-left: var(--swl-list-padding--left);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+
+/* ============================================
+   LP Layout
+   ============================================ */
+.lp-content {
+  --article_size: var(--swl-lp_content_width, 700px);
+}
+
+.lp-content__inner {
+  max-width: var(--article_size);
+  margin: 0 auto;
+  padding: 0 var(--swl-pad_lp);
+}
+
+.lp-content__postContent {
+  margin-bottom: 0;
+  padding: 0 var(--swl-pad_lp_post);
+}
+
+.lp-content__postContent:first-child {
+  margin-top: 0;
+}
+
+.post_content {
+  line-height: 1.7;  /* スマホ: 行間やや詰めて情報密度UP */
+  letter-spacing: var(--swl-letter_spacing);
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+  font-size: var(--swl-fz--content);
+  font-size: var(--swl-fz--content, 16px);
+}
+
+.post_content > * {
+  clear: both;
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+.post_content > :first-child {
+  margin-top: 0 !important;
+}
+
+.post_content > :last-child {
+  margin-bottom: 0 !important;
+}
+
+
+/* ============================================
+   Typography
+   ============================================ */
+.post_content h1 {
+  font-size: 2em;
+}
+
+.post_content h2 {
+  font-size: 1.2em;
+  line-height: 1.4;
+  margin: 4em 0 2em;
+  position: relative;
+  z-index: 1;
+}
+
+.post_content h3 {
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 3em 0 2em;
+  position: relative;
+}
+
+.post_content h4 {
+  font-size: 1.05em;
+  font-weight: 700;
+  margin: 2em 0 1.5em;
+}
+
+.has-text-align-center {
+  text-align: center;
+}
+
+.has-text-align-right {
+  text-align: right;
+}
+
+.has-text-align-left {
+  text-align: left;
+}
+
+
+/* ============================================
+   Balloon (Speech Bubbles)
+   ============================================ */
+.swell-block-balloon {
+  margin-bottom: 15px;
+}
+
+.c-balloon {
+  align-content: flex-start;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.c-balloon.-bln-right {
+  flex-direction: row-reverse;
+}
+
+.c-balloon__icon {
+  flex-shrink: 0;
+  position: relative;
+  text-align: center;
+  width: 60px;
+}
+
+@media (min-width: 600px) {
+  .c-balloon__icon {
+    width: 80px;
+  }
+}
+
+.c-balloon__iconImg {
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  height: 60px;
+  width: 60px;
+}
+
+@media (min-width: 600px) {
+  .c-balloon .c-balloon__iconImg {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.-circle > .c-balloon__iconImg {
+  border: 2px solid #ececec;
+  border-radius: 50%;
+}
+
+.c-balloon__iconName {
+  display: block;
+  font-size: 10px;
+  line-height: 1;
+  opacity: .8;
+  padding-top: 4px;
+}
+
+.c-balloon__body {
+  align-items: flex-start;
+  display: flex;
+  flex-basis: 100%;
+  padding: 4px 16px;
+  position: relative;
+}
+
+@media (min-width: 600px) {
+  .c-balloon__body {
+    padding: 8px 16px;
+  }
+}
+
+.c-balloon__body .c-balloon__text {
+  flex-grow: 1;
+}
+
+.-bln-left .c-balloon__body {
+  justify-content: flex-start;
+}
+
+.-bln-right .c-balloon__body {
+  justify-content: flex-end;
+}
+
+.c-balloon__text {
+  border-radius: 8px;
+  color: #333;
+  line-height: 1.6;
+  max-width: 100%;
+  padding: 1em;
+  position: relative;
+}
+
+@media not all and (min-width: 600px) {
+  .c-balloon__text {
+    font-size: .95em;
+  }
+}
+
+.-border-on .c-balloon__text {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.c-balloon .c-balloon__text > p {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* 吹き出ししっぽ（2層構造：枠線+背景） */
+.c-balloon__text::before,
+.c-balloon__text::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+/* 外側（枠線色） */
+.-bln-left .c-balloon__text::before {
+  left: -10px;
+  border-width: 8px 10px 8px 0;
+}
+.-bln-right .c-balloon__text::before {
+  right: -10px;
+  border-width: 8px 0 8px 10px;
+}
+
+/* 内側（背景色で上書き） */
+.-bln-left .c-balloon__text::after {
+  left: -8px;
+  border-width: 7px 9px 7px 0;
+  top: 19px;
+}
+.-bln-right .c-balloon__text::after {
+  right: -8px;
+  border-width: 7px 0 7px 9px;
+  top: 19px;
+}
+
+/* しっぽの色（data-col別） - 枠線(before) + 背景(after) */
+[data-col="red"].-bln-left .c-balloon__text::before { border-right-color: #f48789; }
+[data-col="red"].-bln-left .c-balloon__text::after { border-right-color: #fff9f9; }
+[data-col="red"].-bln-right .c-balloon__text::before { border-left-color: #f48789; }
+[data-col="red"].-bln-right .c-balloon__text::after { border-left-color: #fff9f9; }
+
+[data-col="blue"].-bln-left .c-balloon__text::before { border-right-color: #93d2f0; }
+[data-col="blue"].-bln-left .c-balloon__text::after { border-right-color: #f7fcff; }
+[data-col="blue"].-bln-right .c-balloon__text::before { border-left-color: #93d2f0; }
+[data-col="blue"].-bln-right .c-balloon__text::after { border-left-color: #f7fcff; }
+
+[data-col="gray"].-bln-left .c-balloon__text::before { border-right-color: #ccc; }
+[data-col="gray"].-bln-left .c-balloon__text::after { border-right-color: #f7f7f7; }
+[data-col="gray"].-bln-right .c-balloon__text::before { border-left-color: #ccc; }
+[data-col="gray"].-bln-right .c-balloon__text::after { border-left-color: #f7f7f7; }
+
+[data-col="green"].-bln-left .c-balloon__text::before { border-right-color: #9ddd93; }
+[data-col="green"].-bln-left .c-balloon__text::after { border-right-color: #edf7ea; }
+[data-col="green"].-bln-right .c-balloon__text::before { border-left-color: #9ddd93; }
+[data-col="green"].-bln-right .c-balloon__text::after { border-left-color: #edf7ea; }
+
+.c-balloon__after,
+.c-balloon__before {
+  border-color: transparent;
+  border-style: solid;
+  display: block;
+  height: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+
+.-speaking .c-balloon__after,
+.-speaking .c-balloon__before {
+  border-width: 8px 10px 8px 0;
+  left: -10px;
+}
+
+.c-balloon__before {
+  z-index: 3;
+}
+
+.-speaking.-border-on .c-balloon__before {
+  left: -8px;
+}
+
+.c-balloon__after {
+  border-right-color: inherit;
+  z-index: 2;
+}
+
+.-speaking.-border-none .c-balloon__after {
+  display: none;
+}
+
+/* Balloon Color Variants */
+[data-col="gray"] .c-balloon__text { background: #f7f7f7; border-color: #ccc; }
+[data-col="gray"] .c-balloon__before { border-right-color: #f7f7f7; }
+
+[data-col="green"] .c-balloon__text { background: #edf7ea; border-color: #9ddd93; }
+[data-col="green"] .c-balloon__before { border-right-color: #edf7ea; }
+
+[data-col="blue"] .c-balloon__text { background: #f7fcff; border-color: #93d2f0; }
+[data-col="blue"] .c-balloon__before { border-right-color: #f7fcff; }
+
+[data-col="red"] .c-balloon__text { background: #fff9f9; border-color: #f48789; }
+[data-col="red"] .c-balloon__before { border-right-color: #fff9f9; }
+
+[data-col="yellow"] .c-balloon__text { background: #f9f9e5; border-color: #fbe593; }
+[data-col="yellow"] .c-balloon__before { border-right-color: #f9f9e5; }
+
+
+/* ============================================
+   Caption Box (.cap_box)
+   ============================================ */
+.cap_box {
+  --capbox-color: var(--color_main);
+  --capbox-color--bg: unset;
+  --the-icon-size: 1.1em;
+  position: relative;
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+.cap_box_ttl {
+  align-items: center;
+  background-color: var(--capbox-color);
+  color: #fff;
+  display: flex;
+  gap: .5em;
+  justify-content: center;
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+  padding: .5em;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.cap_box_content {
+  background-color: var(--capbox-color--bg);
+  border: 1px solid var(--capbox-color);
+  clear: both;
+  margin-top: -2px;
+  padding: 1.25em;
+  position: relative;
+  z-index: 0;
+}
+
+@media (min-width: 600px) {
+  .cap_box_content {
+    padding: 1.5em;
+  }
+}
+
+/* on-border title style */
+.is-style-onborder_ttl2 > .cap_box_ttl,
+.is-style-onborder_ttl > .cap_box_ttl {
+  display: inline-flex;
+  font-size: .85em;
+  left: 1em;
+  line-height: 1;
+  margin-bottom: 0;
+  padding: .5em .75em;
+  position: relative;
+  text-align: center;
+  top: 1em;
+  z-index: 1;
+}
+
+.is-style-onborder_ttl2 > .cap_box_content,
+.is-style-onborder_ttl > .cap_box_content {
+  padding-top: 1.5em;
+}
+
+@media (min-width: 600px) {
+  .is-style-onborder_ttl2 > .cap_box_content,
+  .is-style-onborder_ttl > .cap_box_content {
+    padding-top: 2em;
+  }
+}
+
+/* onborder_ttl (outlined) */
+.is-style-onborder_ttl > .cap_box_ttl {
+  color: var(--capbox-color);
+}
+
+.is-style-onborder_ttl > .cap_box_content,
+.is-style-onborder_ttl > .cap_box_ttl {
+  background-color: var(--color_content_bg) !important;
+}
+
+/* small title style */
+.is-style-small_ttl .cap_box_ttl {
+  float: left;
+  font-size: .85em;
+  padding: .25em .75em;
+  position: relative;
+  top: 1px;
+}
+
+/* shadow style */
+.is-style-shadow.cap_box {
+  box-shadow: var(--swl-box_shadow);
+  overflow: hidden;
+}
+
+.is-style-shadow > .cap_box_content {
+  border: none;
+}
+
+.is-style-shadow:not([data-colset]) {
+  --capbox-color--bg: #fff;
+}
+
+.is-style-shadow:not([data-colset]) > .cap_box_content {
+  color: #333;
+}
+
+/* inner style */
+.is-style-inner > .cap_box_ttl {
+  font-size: .85em;
+  max-width: 100%;
+  min-width: 2em;
+  overflow: hidden;
+  padding: .25em 1em;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.is-style-inner > .cap_box_content::before {
+  content: "";
+  display: block;
+  height: 1em;
+  visibility: hidden;
+  width: 100%;
+}
+
+/* intext style */
+.is-style-intext[data-colset] {
+  background-color: var(--capbox-color--bg);
+}
+
+.is-style-intext.cap_box {
+  border: 1px solid var(--capbox-color);
+  padding: 1.5em;
+}
+
+.is-style-intext > .cap_box_ttl {
+  background: none !important;
+  color: var(--capbox-color);
+  justify-content: flex-start;
+  padding: 0;
+  text-align: left;
+}
+
+.is-style-intext > .cap_box_content {
+  background: none !important;
+  border: none;
+  margin-top: 1em;
+  padding: 0;
+}
+
+/* Cap Box Color Sets */
+.cap_box[data-colset="col1"] {
+  --capbox-color: #63a84d;
+  --capbox-color--bg: #ffffff;
+}
+
+.cap_box[data-colset="col2"] {
+  --capbox-color: #ea7602;
+  --capbox-color--bg: #ffffff;
+}
+
+.cap_box[data-colset="col3"] {
+  --capbox-color: #0d6a19;
+  --capbox-color--bg: #ffffff;
+}
+
+
+/* ============================================
+   Buttons
+   ============================================ */
+.swell-block-button {
+  --the-icon-size: 1.1em;
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+.swell-block-button[data-align="right"] {
+  text-align: right;
+}
+
+.swell-block-button[data-align="left"] {
+  text-align: left;
+}
+
+.swell-block-button a {
+  text-align: center;
+}
+
+/* Base button styles */
+[class*="is-style-btn_"] {
+  --the-fz: 1em;
+  --the-width: auto;
+  --the-min-width: 64%;
+  --the-padding: .75em 1.5em;
+  --the-btn-color: var(--color_main);
+  --the-btn-color2: var(--color_main);
+  --the-btn-bg: var(--the-btn-color);
+  display: block;
+  font-size: var(--the-fz);
+  margin: 0 auto 2em;
+  position: relative;
+  text-align: center;
+}
+
+[class*="is-style-btn_"] a {
+  background: var(--the-btn-bg);
+  border-radius: var(--the-btn-radius, 5px);
+  display: inline-block;
+  letter-spacing: var(--swl-letter_spacing, 1px);
+  line-height: 1.5;
+  margin: 0;
+  min-width: var(--the-min-width);
+  padding: var(--the-padding);
+  position: relative;
+  text-decoration: none;
+  width: var(--the-width);
+  color: #fff;
+  font-weight: 700;
+}
+
+[class*="is-style-btn_"].-size-custom {
+  --the-min-width: 1em;
+}
+
+[class*="is-style-btn_"].-size-s {
+  --the-fz: .9em;
+  --the-min-width: 40%;
+}
+
+[class*="is-style-btn_"].-size-l {
+  --the-min-width: 100%;
+  --the-padding: 1em 1.5em;
+}
+
+/* スマホ: CTAボタンは幅広+タップしやすい高さ */
+@media not all and (min-width: 600px) {
+  [class*="is-style-btn_"] {
+    --the-min-width: 88%;
+    --the-padding: 1em 1em;
+  }
+  [class*="is-style-btn_"] a {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 600px) {
+  [class*="is-style-btn_"] {
+    --the-min-width: 40%;
+  }
+  [class*="is-style-btn_"].-size-s {
+    --the-min-width: 20%;
+  }
+  [class*="is-style-btn_"].-size-l {
+    --the-min-width: 80%;
+  }
+}
+
+/* Solid button */
+.is-style-btn_solid a {
+  box-shadow: 0 4px 0 var(--the-solid-shadow, var(--color_main_dark));
+  color: #fff;
+  font-weight: 700;
+  transition: transform .25s, box-shadow .25s;
+  z-index: 1;
+}
+
+.is-style-btn_solid a:hover {
+  box-shadow: 0 0 0 transparent !important;
+  transform: translate3d(0, 4px, 0);
+}
+
+/* Shiny button */
+.is-style-btn_shiny a {
+  overflow: hidden;
+  position: relative;
+  transition: opacity .25s, transform .25s;
+  z-index: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.is-style-btn_shiny a::before {
+  background-image: linear-gradient(90deg, hsla(0,0%,100%,0), hsla(0,0%,100%,.6) 80%, hsla(0,0%,100%,0));
+  content: "";
+  height: 200px;
+  left: -120px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(25deg);
+  width: 80px;
+}
+
+.is-style-btn_shiny a::after {
+  animation: shiny_btn 3s ease-in-out infinite;
+  background-image: linear-gradient(100deg, hsla(0,0%,100%,0), #fff);
+  content: "";
+  height: 100%;
+  left: -100px;
+  position: absolute;
+  top: 0;
+  width: 50px;
+}
+
+.is-style-btn_shiny a:hover {
+  transform: translateY(2px);
+}
+
+.is-style-btn_shiny a:hover::before {
+  left: 110%;
+  transition: .25s ease-in-out;
+}
+
+.is-style-btn_shiny a:hover::after {
+  animation: none;
+}
+
+@keyframes shiny_btn {
+  0% { opacity: 0; transform: scale(0) rotate(25deg); }
+  84% { opacity: 0; transform: scale(0) rotate(25deg); }
+  85% { opacity: .9; transform: scale(1) rotate(25deg); }
+  100% { opacity: 0; transform: scale(50) rotate(25deg); }
+}
+
+/* Green button variant */
+.green_ {
+  --the-btn-color: #009e17;
+  --the-btn-color2: #7bf7bd;
+  --the-solid-shadow: rgba(0, 119, 17, 1);
+}
+
+
+/* ============================================
+   Check List
+   ============================================ */
+.is-style-check_list,
+.is-style-good_list,
+.is-style-bad_list,
+.is-style-triangle_list {
+  --swl-list-padding--left: .25em;
+  list-style: none !important;
+}
+
+.is-style-check_list ol,
+.is-style-check_list ul {
+  --swl-list-padding--left: 0px;
+  list-style: none !important;
+}
+
+.is-style-check_list li {
+  padding-left: 1.5em;
+  position: relative;
+  list-style: none;
+}
+
+.is-style-check_list li::before {
+  content: "\2713";
+  color: var(--color_list_check);
+  display: block;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1em;
+}
+
+/* Good list (circle) */
+.is-style-good_list li {
+  padding-left: 1.5em;
+  position: relative;
+  list-style: none;
+}
+
+.is-style-good_list li::before {
+  content: "\25CB";
+  color: var(--color_list_good);
+  display: block;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1em;
+}
+
+/* Bad list (cross) */
+.is-style-bad_list li {
+  padding-left: 1.5em;
+  position: relative;
+  list-style: none;
+}
+
+.is-style-bad_list li::before {
+  content: "\2717";
+  color: var(--color_list_bad);
+  display: block;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1em;
+}
+
+/* Triangle list */
+.is-style-triangle_list li {
+  padding-left: 1.5em;
+  position: relative;
+  list-style: none;
+}
+
+.is-style-triangle_list li::before {
+  content: "\25B3";
+  color: var(--color_list_triangle);
+  display: block;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1em;
+}
+
+
+/* ============================================
+   Text Decoration (Inline Colors & Markers)
+   ============================================ */
+.swl-inline-color {
+  --color_link: currentcolor;
+}
+
+.has-swl-deep-01-color { color: var(--color_deep01) !important; }
+.has-swl-deep-02-color { color: var(--color_deep02) !important; }
+.has-swl-deep-03-color { color: var(--color_deep03) !important; }
+.has-swl-deep-04-color { color: var(--color_deep04) !important; }
+
+.has-swl-main-color { color: var(--color_main) !important; }
+.has-black-color { color: #000 !important; }
+.has-white-color { color: #fff !important; }
+
+.has-swl-deep-01-background-color { background-color: var(--color_deep01) !important; }
+.has-swl-deep-02-background-color { background-color: var(--color_deep02) !important; }
+.has-swl-deep-03-background-color { background-color: var(--color_deep03) !important; }
+.has-swl-deep-04-background-color { background-color: var(--color_deep04) !important; }
+
+.has-swl-pale-01-background-color { background-color: var(--color_pale01) !important; }
+.has-swl-pale-02-background-color { background-color: var(--color_pale02) !important; }
+.has-swl-pale-03-background-color { background-color: var(--color_pale03) !important; }
+.has-swl-pale-04-background-color { background-color: var(--color_pale04) !important; }
+
+/* Markers */
+.swl-marker {
+  display: inline;
+  padding: 2px;
+}
+
+.mark_yellow {
+  background-image: linear-gradient(transparent 60%, var(--color_mark_yellow) 0%);
+}
+
+.mark_blue {
+  background-image: linear-gradient(transparent 60%, var(--color_mark_blue) 0%);
+}
+
+.mark_green {
+  background-image: linear-gradient(transparent 60%, var(--color_mark_green) 0%);
+}
+
+.mark_orange {
+  background-image: linear-gradient(transparent 60%, var(--color_mark_orange) 0%);
+}
+
+/* Thick markers */
+.futo .mark_yellow {
+  background-image: linear-gradient(transparent, var(--color_mark_yellow) 0%);
+}
+
+.futo .mark_orange {
+  background-image: linear-gradient(transparent, var(--color_mark_orange) 0%);
+}
+
+.futo .mark_green {
+  background-image: linear-gradient(transparent, var(--color_mark_green) 0%);
+}
+
+.futo .mark_blue {
+  background-image: linear-gradient(transparent, var(--color_mark_blue) 0%);
+}
+
+/* Animated markers (scroll-triggered) */
+@media (scripting: enabled) {
+  .swl-marker {
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+  }
+
+  .swl-marker.is-active {
+    background-size: 100% 100%;
+    transition: background-size 2s;
+  }
+}
+
+
+/* ============================================
+   Image Styles
+   ============================================ */
+/* Full-width alignment */
+.alignfull {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  max-width: 100vw;
+  width: 100vw;
+}
+
+.lp-content .alignfull {
+  margin-left: calc(-1 * var(--swl-pad_lp_post));
+  margin-right: calc(-1 * var(--swl-pad_lp_post));
+  max-width: calc(100% + var(--swl-pad_lp_post) * 2);
+  width: calc(100% + var(--swl-pad_lp_post) * 2);
+}
+
+/* Headline balloon image (full-width heading) */
+.headline-balloon2.wp-block-image {
+  display: flex !important;
+  justify-content: center !important;
+  position: relative;
+  z-index: 1;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.headline-balloon2.wp-block-image img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .headline-balloon2.wp-block-image img {
+    max-width: 100% !important;
+  }
+}
+
+/* Headline balloon (with protruding overlap) */
+.headline-balloon.wp-block-image {
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -16px !important;
+}
+
+@media (min-width: 769px) {
+  .headline-balloon.wp-block-image {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .headline-balloon.wp-block-image img {
+    width: 100% !important;
+    max-width: 700px !important;
+    height: auto !important;
+    display: block;
+  }
+}
+
+/* Headline balloon 3 (protruding from band) */
+.headline-balloon3.wp-block-image {
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto -21px !important;
+  max-width: 700px;
+  width: 100%;
+}
+
+/* Shadow image */
+.wp-block-image.is-style-shadow img,
+img.shadow {
+  box-shadow: 0 2px 8px rgba(0,0,0,.1), 0 4px 8px -4px rgba(0,0,0,.2);
+}
+
+/* wp-block-image base */
+.wp-block-image {
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+.wp-block-image figcaption {
+  font-size: .85em;
+  text-align: center;
+  color: #666;
+  margin-top: .5em;
+}
+
+
+/* ============================================
+   Purupuru Animation (CTA Jiggle)
+   ============================================ */
+.purupuru {
+  animation: purupuru 2s linear 0s infinite;
+}
+
+@keyframes purupuru {
+  0%   { transform: skew(9deg); }
+  10%  { transform: skew(-8deg); }
+  20%  { transform: skew(7deg); }
+  30%  { transform: skew(-6deg); }
+  40%  { transform: skew(5deg); }
+  50%  { transform: skew(-4deg); }
+  60%  { transform: skew(3deg); }
+  70%  { transform: skew(-2deg); }
+  80%  { transform: skew(1deg); }
+  90%  { transform: skew(0deg); }
+  100% { transform: skew(0deg); }
+}
+
+
+/* ============================================
+   Kirakira Animation (Sparkle/Shine)
+   ============================================ */
+.kirakira > *,
+figure.kirakira {
+  overflow: hidden;
+  position: relative;
+}
+
+.kirakira > *::after,
+figure.kirakira::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -5%;
+  transform: rotate(45deg);
+  width: 5%;
+  height: 100%;
+  background-color: #fff;
+  visibility: visible;
+  animation: kirakira 3s ease-in-out infinite;
+}
+
+figure.kirakira {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+@keyframes kirakira {
+  0%, 84% { transform: scale(0) rotate(45deg); opacity: 0; }
+  85% { transform: scale(1) rotate(45deg); opacity: .9; }
+  100% { transform: scale(60) rotate(45deg); opacity: 0; }
+}
+
+/* Kirakira2 (faster variant) */
+.kirakira2 > *::after,
+figure.kirakira2::after {
+  animation: kirakira2 2s ease-in-out infinite;
+}
+
+@keyframes kirakira2 {
+  0%, 50% { transform: scale(0) rotate(45deg); opacity: 0; }
+  51% { transform: scale(1) rotate(45deg); opacity: .9; }
+  100% { transform: scale(60) rotate(45deg); opacity: 0; }
+}
+
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+/* Margin bottom control */
+.u-mb-ctrl + * {
+  margin-top: 0 !important;
+}
+
+.u-mb-0  { margin-bottom: 0 !important; }
+.u-mb-5  { margin-bottom: .5em !important; }
+.u-mb-10 { margin-bottom: 1em !important; }
+.u-mb-15 { margin-bottom: 1.5em !important; }
+.u-mb-20 { margin-bottom: 2em !important; }
+.u-mb-25 { margin-bottom: 2.5em !important; }
+.u-mb-30 { margin-bottom: 3em !important; }
+.u-mb-40 { margin-bottom: 4em !important; }
+.u-mb-50 { margin-bottom: 5em !important; }
+.u-mb-60 { margin-bottom: 6em !important; }
+
+/* Font sizes */
+.u-fz-xs, .fs_xs, .has-xs-font-size   { font-size: var(--swl-fz--xs) !important; }
+.u-fz-s, .fs_s, .has-small-font-size   { font-size: var(--swl-fz--small) !important; }
+.u-fz-m, .has-medium-font-size         { font-size: var(--swl-fz--medium) !important; }
+.u-fz-l, .fs_l, .has-large-font-size   { font-size: var(--swl-fz--large) !important; }
+.u-fz-xl, .fs_xl, .has-huge-font-size  { font-size: var(--swl-fz--huge) !important; }
+
+.u-fz-10 { font-size: 10px; }
+.u-fz-11 { font-size: 11px; }
+.u-fz-12 { font-size: 12px; }
+.u-fz-13 { font-size: 13px; }
+.u-fz-14 { font-size: 14px; }
+.u-fz-15 { font-size: 15px; }
+.u-fz-16 { font-size: 16px; }
+.u-fz-18 { font-size: 18px; }
+
+/* SWELL font size span */
+.swl-fz {
+  font-size: inherit;
+}
+
+
+/* ============================================
+   Columns Layout
+   ============================================ */
+.wp-block-columns {
+  --wp-column-gap: 1.5em;
+  display: flex;
+  gap: var(--wp-column-gap) !important;
+  line-height: 1.6;
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+.wp-block-columns .wp-block-column {
+  margin: 0 !important;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+/* Column borders */
+.border_gray > .wp-block-column {
+  border: 1px solid var(--color_border);
+  padding: 1.5em;
+}
+
+.border_main > .wp-block-column {
+  border: 1px solid var(--color_main);
+  padding: 1.5em;
+}
+
+.shadow_on > .wp-block-column {
+  background: #fff;
+  box-shadow: var(--swl-box_shadow);
+  color: #333;
+  padding: 1.5em;
+}
+
+/* Responsive columns */
+@media (max-width: 599px) {
+  .wp-block-columns {
+    flex-wrap: wrap;
+  }
+
+  .wp-block-columns > .wp-block-column {
+    flex-basis: 100% !important;
+  }
+
+  .wp-block-columns.sp_column2 {
+    flex-wrap: wrap !important;
+    font-size: .9em;
+  }
+
+  .wp-block-columns.sp_column2 > .wp-block-column {
+    flex-basis: calc(50% - var(--wp-column-gap) / 2) !important;
+    flex-grow: 0 !important;
+  }
+
+  .wp-block-columns.sp_mb4_ {
+    row-gap: 4em !important;
+  }
+
+  .wp-block-columns.sp_mb6_ {
+    row-gap: 6em !important;
+  }
+}
+
+
+/* ============================================
+   Table Styles
+   ============================================ */
+.wp-block-table {
+  margin-bottom: var(--swl-block-margin, 2em);
+  overflow-x: auto;
+}
+
+.wp-block-table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.wp-block-table th,
+.wp-block-table td {
+  border: 1px solid var(--color_border--table);
+  padding: .75em 1em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.wp-block-table th {
+  background-color: var(--color_gray);
+  font-weight: 700;
+}
+
+.wp-block-table.is-all-centered th,
+.wp-block-table.is-all-centered td {
+  text-align: center;
+}
+
+.has-fixed-layout {
+  table-layout: fixed;
+}
+
+/* Table scrollable on mobile */
+@media (max-width: 599px) {
+  [data-table-scrollable="sp"] {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  [data-table-scrollable="sp"] table {
+    width: max-content;
+  }
+}
+
+
+/* ============================================
+   Inner Card (White card with shadow)
+   ============================================ */
+.inner-card {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 0 1rem 2rem;
+  margin: 0 auto 2rem;
+  width: 100%;
+  max-width: 1040px;
+}
+
+@media (max-width: 768px) {
+  .inner-card {
+    max-width: 100% !important;
+    padding: 0 0.75rem 1.5rem !important;
+    margin: 0 auto 1.5rem !important;
+  }
+}
+
+.inner-card2 {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+
+
+/* ============================================
+   Full-width Band (swell-block-fullWide)
+   ============================================ */
+.swell-block-fullWide {
+  padding: 36px 0;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  position: relative;
+}
+
+.swell-block-fullWide__inner {
+  max-width: var(--article_size, 700px);
+  margin: 0 auto;
+  padding: 0 var(--swl-pad_lp_post);
+}
+
+.swell-block-fullWide.-bgcolor {
+  background-color: var(--the-bg-color, #f7f7f7);
+}
+
+/* FullWide mobile adjustment */
+@media (max-width: 768px) {
+  .swell-block-fullWide__inner {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+
+/* ============================================
+   Link Styles
+   ============================================ */
+a.nolinkstyle {
+  color: #000;
+  text-decoration: none;
+}
+
+a.nolinkstyle:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.p-entry__body a.nolinkstyle {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+
+/* ============================================
+   Footer
+   ============================================ */
+.l-footer {
+  margin-top: 3em;
+  padding: 2em 0;
+  background: var(--color_bg);
+  border-top: 1px solid var(--color_border);
+}
+
+.l-footer__inner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.l-footer__nav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em;
+  gap: 1em;
+  justify-content: center;
+}
+
+.l-footer__nav a {
+  color: var(--color_text);
+  font-size: .85em;
+}
+
+.copyright {
+  text-align: center;
+  font-size: .8em;
+  color: #999;
+}
+
+
+/* ============================================
+   Responsive Typography
+   ============================================ */
+@media not all and (min-width: 600px) {
+  :root {
+    --swl-fz--content: 4vw;
+  }
+
+  .post_content {
+    font-size: var(--swl-fz--content);
+  }
+}
+
+@media (min-width: 600px) {
+  .post_content {
+    font-size: 16px;
+  }
+}
+
+
+/* ============================================
+   Prevent Horizontal Scroll
+   ============================================ */
+body {
+  overflow-x: hidden;
+}
+
+
+/* ============================================
+   Miscellaneous WP Block Styles
+   ============================================ */
+.wp-block-list {
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+.wp-block-separator {
+  border: none;
+  border-top: 2px solid var(--color_border);
+  margin: 2em 0;
+}
+
+.wp-block-group {
+  margin-bottom: var(--swl-block-margin, 2em);
+}
+
+/* Spacer */
+.wp-block-spacer {
+  clear: both;
+}
+
+/* Quote */
+.wp-block-quote {
+  border-left: 4px solid var(--color_main);
+  padding: 1em 1.5em;
+  margin: 2em 0;
+  background: var(--color_gray);
+}
+
+.wp-block-quote p {
+  margin-bottom: .5em;
+}
+
+.wp-block-quote cite {
+  font-size: .85em;
+  color: #666;
+}
+
+/* ============================================================
+   比較表（横並びテーブル型）
+   ============================================================ */
+.nolinkstyle a { text-decoration: none; color: inherit; }
+.center-title th { text-align: center; font-weight: bold; }
+.is-all-centered td, .is-all-centered th { text-align: center; vertical-align: middle; }
+
+.wp-block-table.nolinkstyle table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9em;
+}
+.wp-block-table.nolinkstyle th,
+.wp-block-table.nolinkstyle td {
+  padding: 10px 8px;
+  border: 1px solid var(--color_border);
+}
+.wp-block-table.nolinkstyle thead th {
+  font-size: .95em;
+}
+.wp-block-table.nolinkstyle tbody th {
+  background: #f9f9f9;
+  font-size: .85em;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SWELL比較表
+   - 見出し行（th colspan）は横スクロールしても画面中央に固定
+   - position: sticky + left: 0 + transform で中央配置
+   ============================================================ */
+
+/* 横スクロールコンテナ */
+.wp-block-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+figure[data-table-scrollable="sp"] { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* テーブル固定幅（横スクロール発生） */
+.wp-block-table table[style*="--table-width"] {
+  min-width: var(--table-width, 590px);
+}
+
+/* 見出し行（th colspan）*/
+.wp-block-table.nolinkstyle tbody th[colspan] {
+  background: var(--color_deep03, #0d6a19);
+  color: #fff;
+  font-weight: bold;
+  font-size: .85em;
+  padding: 8px 0;
+}
+
+/* SWELL実装準拠: thは relative、内側の span が sticky で中央固定 */
+.center-title.wp-block-table th {
+  position: relative;
+  text-align: left;
+}
+
+.center-title.wp-block-table th .swl-cell-text-centered {
+  position: sticky;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-right: -50%;
+  max-width: 80vw;
+  display: inline-block;
+}
+
+/* データセル */
+.wp-block-table.nolinkstyle td {
+  vertical-align: top;
+  padding: 10px 6px;
+  font-size: .82em;
+  line-height: 1.5;
+}
+.wp-block-table.nolinkstyle td img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* スクロールヒント */
+.c-scrollHint {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
+.c-scrollHint span {
+  display: inline-block;
+  padding: 2px 12px;
+  background: #f5f5f5;
+  border-radius: 20px;
+}
+@media (min-width: 960px) {
+  .c-scrollHint.sp_ { display: none; }
+}
+
+/* ============================================================
+   比較表（カード型・inner-card2）
+   ============================================================ */
+.inner-card2.wp-block-table,
+.inner-card2.wp-block-table table,
+.inner-card2.wp-block-table tbody,
+.inner-card2.wp-block-table tr,
+.inner-card2.wp-block-table td {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-spacing: 0 !important;
+  border-collapse: collapse !important;
+}
+.inner-card2.wp-block-table {
+  width: 100% !important;
+}
+.inner-card2.wp-block-table table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+}
+.inner-card2 figure {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   ランキングカード
+   ============================================================ */
+.ranking-card img {
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   比較表 評価マーク（SWELL準拠 SVG mask-image方式）
+   - data-icon属性 + CSS mask-image でSVGアイコンを描画
+   - data-icon-size="l" で2.5em、"s"で1em
+   - data-icon-type="obj" でインライン表示
+   - data-icon-type="bg" でセル背景表示
+   - 色はcurrentColorで親要素のcolorを継承
+   ============================================================ */
+
+/* ============================================================
+   比較表アイコン（imgタグ方式・SWELL太線PNG使用）
+   - PNGをそのまま<img>で表示
+   - CSSフィルターで色付け
+   - .cell-icon クラスで統一管理
+   ============================================================ */
+.cell-icon {
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+}
+.cell-icon img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+}
+.cell-icon small {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 4px;
+  line-height: 1.3;
+  color: #333;
+}
+
+/* ============================================================
+   星評価（SWELL風・CSS版）
+   ============================================================ */
+.star-rating {
+  --star-size: 18px;
+  --star-color: #ffc107;
+  --star-empty: #ddd;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.star-rating .star {
+  width: var(--star-size);
+  height: var(--star-size);
+  font-size: var(--star-size);
+  position: relative;
+  display: block;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.star-rating .star::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--star-color);
+  overflow: hidden;
+  width: var(--fill, 100%);
+  display: block;
+}
+.star-rating .star::after {
+  content: "★";
+  color: var(--star-empty);
+}
+.star-rating .star.-full::before { --fill: 100%; }
+.star-rating .star.-half::before { --fill: 50%; }
+.star-rating .star.-empty::before { --fill: 0%; }
+
+/* 比較表用の大サイズ */
+.star-rating.-large { --star-size: 20px; }
+
+/* 色付け: CSSフィルターでPNG(黒)を着色 */
+/* 二重丸: 赤 #dd0f0f */
+.cell-icon.-doubleCircle img {
+  filter: invert(16%) sepia(95%) saturate(6000%) hue-rotate(355deg) brightness(90%) contrast(95%);
+}
+/* 丸: 青 #0a99ff */
+.cell-icon.-circle img {
+  filter: invert(45%) sepia(98%) saturate(2000%) hue-rotate(190deg) brightness(100%) contrast(101%);
+}
+/* 三角: オレンジ #ed742f */
+.cell-icon.-triangle img {
+  filter: invert(52%) sepia(85%) saturate(1500%) hue-rotate(350deg) brightness(95%) contrast(95%);
+}
+/* バツ: 赤 #ed1212 */
+.cell-icon.-close img {
+  filter: invert(14%) sepia(99%) saturate(6000%) hue-rotate(355deg) brightness(95%) contrast(100%);
+}
+
