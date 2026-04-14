@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>手足のしびれに飲んで効く医薬品おすすめ3選</title>
-  <link rel="stylesheet" href="swell-lp.css?v=17">
+  <link rel="stylesheet" href="swell-lp.css?v=19">
   <style>
     /* 左右余白 */
     body { padding: 0 6px; }
@@ -283,7 +283,7 @@
 
 <h3>しびれを放置すると何が起こる？</h3>
 
-<p>この悪循環を放っておくと、<br>しびれは<strong>確実に悪化</strong>していきます。<br><br><span class="swl-marker mark_yellow">最初は指先だけだったしびれが、<br>手のひら全体、足の裏へと広がり、</span><br>やがて…</p>
+<p>この悪循環を放っておくと、<br>しびれは<strong>確実に悪化</strong>していきます。<br><br><span class="swl-marker mark_yellow">最初は指先だけだったしびれが、</span><br><span class="swl-marker mark_yellow" style="transition-delay: 0.7s;">手のひら全体、足の裏へと広がり、</span><br>やがて…</p>
 
 <figure class="wp-block-image size-full"><img src="img/img05_risk_scenes_v2.webp" alt="放置リスク4シーン" style="width:100%;"></figure>
 
@@ -512,7 +512,7 @@
 
 <h2 class="wp-block-heading h2-balloon" style="--h2-bg:#1a3d5c; margin:0 0 3em;">しびれに効く7成分を<br>最大量配合</h2>
 
-<p>ラクーダEXαは、しびれに効く<br><strong><span class="swl-inline-color has-swl-deep-01-color">7つの有効成分を、<br>第三類医薬品として認められた<br>最大量まで配合</span></strong>しています。</p>
+<p>ラクーダEXαは、しびれに効く<br><span class="swl-inline-color has-swl-deep-01-color" style="font-weight: bold;">7つの有効成分</span>を、<span class="swl-inline-color has-swl-deep-01-color" style="font-weight: bold;"><br>認められた最大量まで配合</span>しています。</p>
 
 <p>中途半端な量ではなく、<br>成分ごとに決められた上限いっぱい。<br>これが他の市販薬と違う、<br>ラクーダEXαの大きな特徴です。</p>
 
@@ -768,4 +768,101 @@
     </main>
   </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Split markers containing <br> into separate spans for staggered animation
+  document.querySelectorAll(".swl-marker").forEach(marker => {
+    if (!marker.querySelector("br")) return;
+    const parent = marker.parentNode;
+    const cls = marker.className;
+    // Collect child nodes and split at <br>
+    const groups = [[]];
+    marker.childNodes.forEach(node => {
+      if (node.nodeName === "BR") {
+        groups.push([]);
+      } else {
+        groups[groups.length - 1].push(node);
+      }
+    });
+    if (groups.length <= 1) return;
+    // Replace original span with multiple spans
+    const frag = document.createDocumentFragment();
+    groups.forEach((nodes, i) => {
+      if (nodes.length === 0) return;
+      const span = document.createElement("span");
+      span.className = cls;
+      if (i > 0) span.style.transitionDelay = (i * 0.7) + "s";
+      nodes.forEach(n => span.appendChild(n));
+      frag.appendChild(span);
+      if (i < groups.length - 1) frag.appendChild(document.createElement("br"));
+    });
+    marker.replaceWith(frag);
+  });
+
+  // Observe all markers
+  const markers = document.querySelectorAll(".swl-marker");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-active");
+        } else {
+          entry.target.classList.remove("is-active");
+        }
+      });
+    },
+    { rootMargin: "0px 0px -20% 0px" }
+  );
+  markers.forEach((marker) => observer.observe(marker));
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Split markers containing <br> into separate spans for staggered animation
+  document.querySelectorAll(".swl-marker").forEach(marker => {
+    if (!marker.querySelector("br")) return;
+    const parent = marker.parentNode;
+    const cls = marker.className;
+    // Collect child nodes and split at <br>
+    const groups = [[]];
+    marker.childNodes.forEach(node => {
+      if (node.nodeName === "BR") {
+        groups.push([]);
+      } else {
+        groups[groups.length - 1].push(node);
+      }
+    });
+    if (groups.length <= 1) return;
+    // Replace original span with multiple spans
+    const frag = document.createDocumentFragment();
+    groups.forEach((nodes, i) => {
+      if (nodes.length === 0) return;
+      const span = document.createElement("span");
+      span.className = cls;
+      if (i > 0) span.style.transitionDelay = (i * 0.7) + "s";
+      nodes.forEach(n => span.appendChild(n));
+      frag.appendChild(span);
+      if (i < groups.length - 1) frag.appendChild(document.createElement("br"));
+    });
+    marker.replaceWith(frag);
+  });
+
+  // Observe all markers
+  const markers = document.querySelectorAll(".swl-marker");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-active");
+        } else {
+          entry.target.classList.remove("is-active");
+        }
+      });
+    },
+    { rootMargin: "0px 0px -20% 0px" }
+  );
+  markers.forEach((marker) => observer.observe(marker));
+});
+</script>
 </body></html>
