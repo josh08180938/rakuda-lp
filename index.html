@@ -188,6 +188,51 @@
       overflow: hidden;
     }
 
+    /* 選び方ポイント見出し（ブルー吹き出し） */
+    .h3-point {
+      background: #1a3d5c;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      padding: 0.7em 1em;
+      border-radius: 8px;
+      margin: 1.5em 0 0.8em;
+      position: relative;
+    }
+    .h3-point::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 24px;
+      border-width: 10px 8px 0;
+      border-style: solid;
+      border-color: #1a3d5c transparent transparent;
+    }
+
+    /* 全画像をセンター寄せ */
+    .wp-block-image {
+      text-align: center;
+    }
+    .wp-block-image img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* スマホ：見出し画像・FVを全幅（全ての親paddingを打ち消す） */
+    @media (max-width: 599px) {
+      .full-bleed {
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        position: relative;
+      }
+      .full-bleed img {
+        width: 100% !important;
+        max-width: none !important;
+        display: block;
+      }
+    }
+
     /* PC表示：見出し・FVを700px内に収める */
     @media (min-width: 600px) {
       .alignfull,
@@ -208,16 +253,14 @@
       <div class="lp-content__postContent post_content">
 
 <!-- ===== Section 0: FV ===== -->
-<figure class="wp-block-image size-full u-mb-ctrl u-mb-0"><a href="#"><img src="img/1.webp" alt="手足のしびれに飲んで効く 医薬品おすすめ3選" style="width:100%;display:block;"></a></figure>
+<figure class="wp-block-image size-full u-mb-ctrl u-mb-0 full-bleed"><a href="#"><img src="img/sakamoto_01.webp" alt="手足のしびれに飲んで効く 医薬品おすすめ3選" style="width:100%;display:block;"></a></figure>
 
-<div class="section-date">2026年3月27日更新</div>
+<div class="section-date" id="js-update-date">2026年4月21日更新</div>
 
-<p class="has-text-align-center u-mb-ctrl u-mb-0"><span style="font-size:14px" class="swl-fz"><strong><span class="swl-inline-color has-swl-deep-01-color">＼おすすめ医薬品3選を今すぐチェックする／</span></strong></span></p>
-
-<figure class="wp-block-image aligncenter size-full"><a href="#ranking"><img src="img/2.webp" alt="ランキングをすぐに見たい方はこちら" style="max-width:400px;width:100%;display:block;margin:0 auto;"></a></figure>
+<figure class="wp-block-image aligncenter size-full"><a href="#ranking"><img src="img/sakamoto_02.webp" alt="ランキングをすぐに見たい方はこちら" style="max-width:400px;width:100%;display:block;margin:0 auto;"></a></figure>
 
 <!-- ===== Section 1: お悩みチェックリスト ===== -->
-<figure class="wp-block-image size-full" style="margin-bottom:15px;"><img src="img/3.webp" alt="こんなお悩みありませんか？" style="width:100%;"></figure>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_03.webp" alt="こんなお悩みありませんか？" style="width:100%;"></figure>
 
 <ul class="is-style-check_list">
 <li><strong><span class="swl-inline-color has-swl-deep-01-color">指先がしびれて</span></strong>ボタンが掛けにくい</li>
@@ -237,7 +280,7 @@
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-left" data-col="red">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#e44141;">体験者</div>
+      <img src="img/avatar_woman60.webp" alt="体験者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">60代女性</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -251,7 +294,7 @@
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -263,15 +306,15 @@
 </div>
 
 <!-- ===== Section 2: 原因+放置リスク ===== -->
-<figure class="wp-block-image size-full" style="margin-bottom:15px;"><img src="img/4.webp" alt="「異常なし」なのにしびれが続く理由" style="width:100%;"></figure>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_04.webp" alt="「異常なし」なのにしびれが続く理由" style="width:100%;"></figure>
 
 <p>病院でMRIや血液検査を受けても「異常なし」。でも、しびれは続いている。<br>実はこれ、検査では見つからない<strong><span class="swl-inline-color has-swl-deep-01-color">「末梢神経」の問題</span></strong>です。</p>
 
-<h3><span class="swl-marker mark_yellow" style="background-size: 100% 100%;">末梢神経が傷んでいる</span></h3>
+<h3>末梢神経が傷んでいる</h3>
 
-<p>手足の先まで張りめぐらされた<br>末梢神経は、<br><strong></strong><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong>加齢や血行不良</strong>によって</span><br><span class="swl-marker mark_yellow" style="transition-delay: 0.7s; background-size: 100% 100%;">少しずつ傷んでいきます。</span></p>
+<p>手足の先まで張りめぐらされた<br>末梢神経は、<br><strong></strong><strong>加齢や血行不良</strong>によって<br>少しずつ傷んでいきます。</p>
 
-<figure class="wp-block-image size-full"><img src="img/5.webp" alt="神経の損傷・血行不良・筋肉の硬直" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_05.webp" alt="神経の損傷・血行不良・筋肉の硬直" style="width:100%;"></figure>
 
 <p>この傷みは、MRIやレントゲンには映りません。<br>だから<strong>「異常なし」と言われてしまう</strong>んです。</p>
 
@@ -281,20 +324,20 @@
 
 <p><strong>この悪循環が、<br>しびれが止まらない<br>本当の原因です。</strong></p>
 
-<figure class="wp-block-image size-full"><img src="img/6.webp" alt="手足のしびれの悪循環・神経の損傷" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_06.webp" alt="手足のしびれの悪循環・神経の損傷" style="width:100%;"></figure>
 
 <h3>しびれを放置すると何が起こる？</h3>
 
-<p>この悪循環を放っておくと、<br>しびれは<strong>確実に悪化</strong>していきます。<br><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;">最初は指先だけだったしびれが、</span><br><span class="swl-marker mark_yellow" style="transition-delay: 0.7s; background-size: 100% 100%;">手のひら全体、足の裏へと広がり、</span><br>やがて…</p>
+<p>この悪循環を放っておくと、<br>しびれは<strong>確実に悪化</strong>していきます。<br><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;">最初は指先だけだったしびれが、</span><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;">手のひら全体、足の裏へと広がり、</span><br>やがて…</p>
 
-<figure class="wp-block-image size-full"><img src="img/7.webp" alt="放置リスク4シーン" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_07.webp" alt="放置リスク4シーン" style="width:100%;"></figure>
 
 <p>日常の「当たり前」が、<br>少しずつできなくなっていきます。</p>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -306,12 +349,12 @@
 </div>
 
 <!-- ===== Section 2.5: 病院orセルフケア ===== -->
-<figure class="wp-block-image size-full"><img src="img/8.webp" alt="病院orセルフケア振り分け図" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_08.webp" alt="病院orセルフケア振り分け図" style="width:100%;"></figure>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -323,14 +366,14 @@
 </div>
 
 <!-- ===== Section 3: 他手段否定 ===== -->
-<figure class="wp-block-image size-full" style="margin-bottom:15px;"><img src="img/9.webp" alt="おすすめのしびれ対策は？" style="width:100%;"></figure>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_09.webp" alt="おすすめのしびれ対策は？" style="width:100%;"></figure>
 
-<figure class="wp-block-image size-full"><img src="img/10.webp" alt="通院・セルフケア・サプリ・医薬品 比較テーブル" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_10.webp" alt="通院・セルフケア・サプリ・医薬品 比較テーブル" style="width:100%;"></figure>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-left" data-col="red">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#e44141;">体験者</div>
+      <img src="img/avatar_woman60.webp" alt="体験者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">60代女性</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -343,14 +386,14 @@
 
 <p>ここでポイントになるのが、<br><strong><span class="swl-inline-color has-swl-deep-01-color">「サプリ」と「医薬品」の違い</span></strong>です。</p>
 
-<figure class="wp-block-image size-full"><img src="img/11.webp" alt="サプリメント（食品）vs医薬品 2択図解" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_11.webp" alt="サプリメント（食品）vs医薬品 2択図解" style="width:100%;"></figure>
 
-<p>サプリメントはあくまで食品扱い。<br>しびれに効くとは言えません。<br>一方、<strong>医薬品は厚生労働省が<br>効果・効能を認めたもの</strong>です。<br><br>しびれのような慢性的な悩みには、<br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong>「効果が認められた医薬品」で</strong></span><br><span class="swl-marker mark_yellow" style="transition-delay: 0.7s; background-size: 100% 100%;">対策するのが確実</span>です。</p>
+<p>サプリメントはあくまで食品扱い。<br>しびれに効くとは言えません。<br>一方、<strong>医薬品は厚生労働省が<br>効果・効能を認めたもの</strong>です。<br><br>しびれのような慢性的な悩みには、<br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong>「効果が認められた医薬品」で</strong></span><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;">対策するのが確実</span>です。</p>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -362,19 +405,23 @@
 </div>
 
 <!-- ===== Section 4: 選び方3つ ===== -->
-<figure class="wp-block-image size-full" style="margin-bottom:15px;"><img src="img/heading_05_erabikata_v4_cropped.png" alt="失敗しないしびれ医薬品の選び方" style="width:100%;"></figure>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_12.webp" alt="失敗しないしびれ医薬品の選び方" style="width:100%;"></figure>
 
 <p>しびれ向けの市販薬は<br>いくつもありますが、<br>中身をよく見ると、<br>実は大きな違いがあります。<br>以下の<strong>3つ</strong>を押さえておけば、<br>選び方で迷いません。</p>
 
-<h3>①しびれに効く成分が十分入っているか</h3>
+<h3 class="h3-point">①しびれに効く成分が十分入っているか</h3>
+
+<figure class="wp-block-image size-full"><img src="img/sakamoto_13.webp" alt="しびれがなくなって元気そうな60代女性" loading="lazy"></figure>
 
 <p>末梢神経のケアで欠かせないのは、<br><span class="swl-inline-color has-swl-deep-01-color"><b>傷んだ神経を修復する成分。</b></span><br><br>さらに、<span class="swl-inline-color has-swl-deep-01-color"><b>血流を改善する成分</b></span>も<br>一緒に入っているものがおすすめ。<br><br>「修復」と「血流改善」。<br>この両方をしっかり<br>カバーできているかが、<br>市販薬選びの大きな分かれ目です。</p>
 
-<h3>②飲み続けやすいか</h3>
+<h3 class="h3-point">②飲み続けやすいか</h3>
 
-<p>しびれの市販薬は、<br>最低でも<strong>1〜2ヶ月は続けないと</strong><br>効果が分かりません。<br><br>ここで意外と大事なのが、<br>1日の服用回数。<br>1日3回の薬は、<br>昼の飲み忘れが起きやすく、<br>結局続かなくなる原因になります。<br><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong>1日1回で済むかどうか。</strong></span><br><span class="swl-marker mark_yellow" style="transition-delay: 0.7s; background-size: 100% 100%;">地味ですが、ここで差がつきます。</span></p>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_14.webp" alt="1日1回で続けやすい" loading="lazy"></figure>
 
-<h3>③安心して始められるか</h3>
+<p>しびれの市販薬は、<br>最低でも<strong>1〜2ヶ月は続けないと</strong><br>効果が分かりません。<br><br>ここで意外と大事なのが、<br>1日の服用回数。<br>1日3回の薬は、<br>昼の飲み忘れが起きやすく、<br>結局続かなくなる原因になります。<br><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong>1日1回で済むかどうか。</strong></span><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;">地味ですが、ここで差がつきます。</span></p>
+
+<h3 class="h3-point">③安心して始められるか</h3>
 
 <p>効果が期待できても、<br>始めるハードルが高ければ続きません。<br>以下の3つが揃っているかチェックしましょう。</p>
 
@@ -394,7 +441,7 @@
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -408,7 +455,7 @@
 <p>以上をふまえて、<br>しびれに効く医薬品<br>おすすめ3選を紹介します。</p>
 
 <!-- ===== Section 5: 比較表 ===== -->
-<figure class="wp-block-image size-full" id="ranking" style="margin-bottom:20px;"><img src="img/heading_06_ranking_v5.png" alt="しびれ医薬品おすすめ3選" style="width:100%;"></figure>
+<figure class="wp-block-image size-full full-bleed" id="ranking" style="margin-bottom:20px;"><img src="img/sakamoto_15.webp" alt="しびれ医薬品おすすめ3選" style="width:100%;"></figure>
 
 <figure class="wp-block-table u-mb-ctrl u-mb-0"><table class="has-fixed-layout"><tbody>
 <tr>
@@ -468,7 +515,7 @@
 <p class="has-text-align-center"><strong><span class="swl-inline-color has-swl-deep-01-color">＼"修復＋血流改善"までカバーするのはコレ／</span></strong></p>
 
 <!-- ===== Section 6: ゴリ推し ===== -->
-<h2 class="wp-block-heading h2-solid" style="--h2-bg:#a81a1a; margin:0 0 15px; display:flex; justify-content:space-between; align-items:center;">1位 ラクーダEXα<span style="color:#ffc107; letter-spacing:3px; font-size:1.2em; margin-right:.5em;">★★★★★</span></h2>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_16.webp" alt="1位 ラクーダEXα" style="width:100%;"></figure>
 
 <figure class="wp-block-image size-full aligncenter" style="text-align: center;"><img src="img/product_rakuda.jpg" alt="ラクーダEXαパッケージ" style="width: 333px; height: auto; display: block; margin-left: auto; margin-right: auto;" class=""></figure>
 
@@ -483,7 +530,7 @@
 </ul>
 </div></div>
 
-<p>通常7,320円のラクーダEXαが、<br>公式サイト限定で<span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong><span class="swl-inline-color has-swl-deep-01-color">初回72%OFFの1,980円。</span></strong></span><br><span class="swl-marker mark_yellow" style="transition-delay: 0.7s; background-size: 100% 100%;"></span></p>
+<p>通常7,320円のラクーダEXαが、<br>公式サイト限定で<span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong><span class="swl-inline-color has-swl-deep-01-color">初回72%OFFの1,980円。</span></strong></span><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"></span></p>
 
 <p><span class="swl-inline-color has-swl-deep-01-color"><strong><span style="font-size:18px" class="swl-fz">1日あたり約66円</span></strong></span>。缶コーヒー1本より安い値段で始められます。</p>
 
@@ -495,7 +542,7 @@
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-left" data-col="red">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#e44141;">体験者</div>
+      <img src="img/avatar_woman60.webp" alt="体験者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">60代女性</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -508,11 +555,9 @@
 
 <p class="has-text-align-center"><strong><span class="swl-inline-color has-swl-deep-01-color">＼初回72%OFF・送料無料・返金保証付き／</span></strong></p>
 
-<div class="swell-block-button green_ is-style-btn_shiny" style="--the-width:95%">
-  <a href="mcv1.html" class="swell-block-button__link"><span>公式サイトで詳しく見る</span></a>
-</div>
+<figure class="wp-block-image size-full" style="text-align:center;"><a href="#"><img src="img/sakamoto_17.webp" alt="今すぐお試し" style="width:100%;display:inline-block;"></a></figure>
 
-<h2 class="wp-block-heading h2-balloon" style="--h2-bg:#1a3d5c; margin:0 0 3em;">しびれに効く7成分を<br>最大量配合</h2>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_18.webp" alt="しびれに効く7成分を最大量配合" style="width:100%;"></figure>
 
 <p class="">ラクーダEXαは、<br>しびれに効く<span class="swl-inline-color has-swl-deep-01-color" style="font-weight: bold;">7つの有効成分</span>を、<br><span class="swl-inline-color has-swl-deep-01-color" style="font-weight: bold;">認められた最大量まで配合</span>しています。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_004919398.webp" alt="2026y04m16d_004919398" loading="lazy" style="max-width: 100%;" class=""></figure>
 
@@ -524,12 +569,12 @@
 
 <h3 class="wp-block-heading h3-balloon-left" style="--h2-bg:#1a3d5c; margin:0 0 2.5em;">Point2：血流を改善して、修復を加速する</h3>
 
-<p>せっかく神経の修復成分を摂っても、<br>血流が悪ければ末梢のしびれ部分に届きません。<br><br>ラクーダEXαは、末梢の血流を改善する<br><strong><span class="swl-inline-color has-swl-deep-01-color">ニコチン酸アミド</span></strong>配合で修復した神経に、<br>しっかり栄養を届けてくれます。<br></p><h3 class="wp-block-heading h3-balloon-left" style="--h2-bg:#1a3d5c; margin:0 0 2.5em;">Point3：筋肉疲労を緩和する</h3><p><span style="letter-spacing: 0.4px;">この</span><strong style="letter-spacing: 0.4px;">「</strong><strong style="letter-spacing: 0.4px;">修復＋血流改善」の</strong><br style="letter-spacing: 0.4px;"><span style="letter-spacing: 0.4px;">Wアプローチに加えて筋肉の疲労を</span><br style="letter-spacing: 0.4px;"><span style="letter-spacing: 0.4px;">緩和する効果もあります。</span></p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_012814290.webp" alt="2026y04m16d_012814290" loading="lazy" style="max-width: 100%;"></figure><p class=""><br><br><br>それぞれの成分を最大量で配合し<br>３つの原因にアプローチするから、<br>ラクーダEXαは効くのです。</p>
+<p>せっかく神経の修復成分を摂っても、<br>血流が悪ければ末梢のしびれ部分に届きません。<br><br>ラクーダEXαは、末梢の血流を改善する<br><strong><span class="swl-inline-color has-swl-deep-01-color">ニコチン酸アミド</span></strong>配合で修復した神経に、<br>しっかり栄養を届けてくれます。<br></p><h3 class="wp-block-heading h3-balloon-left" style="--h2-bg:#1a3d5c; margin:0 0 2.5em;">Point3：筋肉疲労を緩和する</h3><p><span style="letter-spacing: 0.4px;">この</span><strong style="letter-spacing: 0.4px;">「</strong><strong style="letter-spacing: 0.4px;">修復＋血流改善」の</strong><br style="letter-spacing: 0.4px;"><span style="letter-spacing: 0.4px;">Wアプローチに加えて筋肉の疲労を</span><br style="letter-spacing: 0.4px;"><span style="letter-spacing: 0.4px;">緩和する効果もあります。</span></p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_012814290.webp" alt="2026y04m16d_012814290" loading="lazy" style="max-width: 100%;"></figure><p class=""><br><br><br>それぞれの成分を最大量で配合し<br>３つの原因にアプローチするから、<br>ラクーダEXαは効果が期待できるのです。</p>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -540,20 +585,20 @@
   </div>
 </div>
 
-<h2 class="wp-block-heading h2-balloon" style="--h2-bg:#1a3d5c; margin:0 0 3em;">しびれに特化した高品質な医薬品</h2>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_19.webp" alt="しびれに特化した高品質な医薬品" style="width:100%;"></figure>
 
 <p class="">ラクーダEXαは、<br><strong>「手足のしびれ」が効能・効果に</strong><br>正式に明記された第三類医薬品。<br></p><p>厚生労働省が認めた、<br>しびれ対策のための医薬品です。<br><br></p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_004657620.webp" alt="2026y04m16d_004657620" loading="lazy" style="max-width: 100%;"></figure>
 
 <!-- img16 添付文書：外注で差し替え予定 -->
 
-<p class=""><br></p><h2 class="wp-block-heading h2-balloon" style="--h2-bg:#1a3d5c; margin:0 0 3em;">しびれに特化した高品質な医薬品</h2><p>ラクーダEXを製造しているのは、<br><strong>大正創業・100年を超える老舗製薬会社</strong>。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_004808097.webp" alt="2026y04m16d_004808097" loading="lazy" style="max-width: 100%;"></figure><p class=""><br>さくらの森との共同開発で、<br>しびれに悩む人に届け続け、<br>シリーズ累計<strong><span class="swl-inline-color has-swl-deep-01-color">1,400万袋</span></strong>を突破。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_004826346.webp" alt="2026y04m16d_004826346" loading="lazy" style="max-width: 100%;"></figure><p class=""><br></p><p class="">品質管理も徹底させており、<br>国内工場で一つひとつ<br>丁寧に作られているそうです。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_012312281.webp" alt="2026y04m16d_012312281" loading="lazy" style="max-width: 100%;"></figure>
+<p class=""><br></p><p>ラクーダEXを製造しているのは、<br><strong>大正創業・100年を超える老舗製薬会社</strong>。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_004808097.webp" alt="2026y04m16d_004808097" loading="lazy" style="max-width: 100%;"></figure><p class=""><br>さくらの森との共同開発で、<br>しびれに悩む人に届け続け、<br>シリーズ累計<strong><span class="swl-inline-color has-swl-deep-01-color">1,400万袋</span></strong>を突破。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_004826346.webp" alt="2026y04m16d_004826346" loading="lazy" style="max-width: 100%;"></figure><p class=""><br></p><p class="">品質管理も徹底させており、<br>国内工場で一つひとつ<br>丁寧に作られているそうです。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_012312281.webp" alt="2026y04m16d_012312281" loading="lazy" style="max-width: 100%;"></figure>
 
-<p class="">さらに、<br><strong><span class="swl-inline-color has-swl-deep-01-color">登録販売者の資格を持つ専門スタッフが<br>購入後の無料サポートもあるので安心して<br></span></strong>しびれケアを始められます。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/2026y04m16d_013311413.webp" alt="2026y04m16d_013311413" loading="lazy" style="max-width: 100%;" class=""></figure>
+<p class="">さらに、<br><strong><span class="swl-inline-color has-swl-deep-01-color">登録販売者の資格を持つ専門スタッフが<br>購入後の無料サポートもあるので安心して<br></span></strong>しびれケアを始められます。</p><figure class="wp-block-image size-full" style="text-align: center;"><img src="img/sakamoto_20.webp" alt="2026y04m16d_013311413" loading="lazy" style="max-width: 100%;" class=""></figure>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-right" data-col="blue">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#3d79d5;">専門家</div>
+      <img src="img/avatar_expert.jpg" alt="登録販売者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">登録販売者</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -564,7 +609,7 @@
   </div>
 </div>
 
-<h3 class="wp-block-heading h2-left-border" style="--h2-color:#f09f4d; --h2-bg-light:#fdf9ee; margin:0 0 1.5em;">実際に飲んだ方の声</h3>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_21.webp" alt="ラクーダEXαの口コミ" style="width:100%;"></figure>
 
 <!-- Review 1 -->
 <div class="swell-block-capbox cap_box u-mb-ctrl u-mb-0" data-colset="col1"><div class="cap_box_ttl"><span><strong><span class="swl-fz u-fz-l">ボタンが掛けられた。それだけで涙が出た</span></strong></span></div><div class="cap_box_content">
@@ -603,15 +648,15 @@
 </div></div>
 
 <!-- Pricing section -->
-<h2 class="wp-block-heading h2-balloon" style="--h2-bg:#1a3d5c; margin:0 0 3em;">ここから見逃し厳禁</h2>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_22.webp" alt="ここから見逃し厳禁" style="width:100%;"></figure>
 
-<figure class="wp-block-image size-full"><img src="img/img18_official_only_v2.webp" alt="Amazon・楽天では購入できません 公式サイト限定" style="width:100%;" class=""></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_23.webp" alt="Amazon・楽天では購入できません 公式サイト限定" style="width:100%;" class=""></figure>
 
-<p>ラクーダEXαは<br><strong>公式サイト限定</strong>の販売です。<br>ドラッグストアや通販サイトでは<br>購入できません。<br><br>だからこそ、公式サイトだけの<br>特別価格とサポートが<br>実現しています。<br><br><br>しかもラクーダEXαなら<br><strong>通院の手間も待ち時間もありません</strong>。</p>
+<p>ラクーダEXαは<br>楽天でも購入できますが、<br><strong>5,390円〜</strong>とかなり割高。<br>Amazonでは取り扱いなし。<br><br><strong>公式サイトなら初回1,980円</strong>で、<br>返金保証や専門スタッフのサポートも<br>公式限定の特典です。<br><br><br>しかもラクーダEXαなら<br><strong>通院の手間も待ち時間もありません</strong>。</p>
 
 <h4>それでも不安な方へ</h4>
 
-<figure class="wp-block-image size-full"><img src="img/img19_henpin.jpg" alt="30日間全額返金保証" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_24.webp" alt="30日間全額返金保証" style="width:100%;"></figure>
 
 <div class="swell-block-capbox cap_box is-style-onborder_ttl2" data-colset="col2"><div class="cap_box_ttl"><span>安心の3つの保証</span></div><div class="cap_box_content">
 <ul>
@@ -621,12 +666,12 @@
 </ul>
 </div></div>
 
-<figure class="wp-block-image size-full"><img src="img/img20_no_lock_v2.webp" alt="定期縛りなし いつでも変更・休止OK" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_25.webp" alt="定期縛りなし いつでも変更・休止OK" style="width:100%;"></figure>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-left" data-col="red">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#e44141;">体験者</div>
+      <img src="img/avatar_woman60.webp" alt="体験者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">60代女性</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -639,27 +684,25 @@
 
 <p class="has-text-align-center"><strong><span class="swl-inline-color has-swl-deep-01-color">＼定期縛りなし・いつでも解約OK／</span></strong></p>
 
-<div class="swell-block-button green_ is-style-btn_shiny" style="--the-width:95%">
-  <a href="mcv1.html" class="swell-block-button__link"><span>公式サイトで詳しく見る</span></a>
-</div>
+<figure class="wp-block-image size-full" style="text-align:center;"><a href="#"><img src="img/sakamoto_17.webp" alt="今すぐお試し" style="width:100%;display:inline-block;"></a></figure>
 
 <!-- Urgency block -->
-<div class="swell-block-capbox cap_box is-style-onborder_ttl2" data-colset="col1"><div class="cap_box_ttl"><span>【2026年3月追記】</span></div><div class="cap_box_content">
+<div class="swell-block-capbox cap_box is-style-onborder_ttl2" data-colset="col1"><div class="cap_box_ttl"><span id="js-urgency-date">【2026年4月21日追記】</span></div><div class="cap_box_content">
 <p><strong><span class="swl-inline-color has-swl-deep-01-color">キャンペーン在庫が残りわずかです</span></strong></p>
 </div></div>
 
 <p>ラクーダEXαの<br>初回1,980円キャンペーンですが、<br>注文が殺到しており、<br><strong>在庫が急速に減っています</strong>。</p>
 
-<figure class="wp-block-image size-full"><img src="img/oisogikudasai.webp" alt="在庫残りわずか" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_26.webp" alt="在庫残りわずか" style="width:100%;"></figure>
 
 <p>キャンペーンが終了すると、<br>通常価格7,320円での購入となります。<strong><span class="swl-inline-color has-swl-deep-01-color"><br></span></strong></p>
 
-<figure class="wp-block-image size-full"><img src="img/2026y04m16d_070117292.webp" alt="7,320円-1,980円=5,340円おトク" style="width:100%;"></figure>
+<figure class="wp-block-image size-full"><img src="img/sakamoto_27.webp" alt="7,320円-1,980円=5,340円おトク" style="width:100%;"></figure>
 
 <div class="swell-block-balloon">
   <div class="c-balloon -bln-left" data-col="red">
     <div class="c-balloon__icon -circle">
-      <div class="avatar-placeholder" style="background:#e44141;">体験者</div>
+      <img src="img/avatar_woman60.webp" alt="体験者" class="c-balloon__iconImg" width="80" height="80">
       <span class="c-balloon__iconName">60代女性</span>
     </div>
     <div class="c-balloon__body -speaking -border-on">
@@ -672,14 +715,11 @@
 
 <p class="has-text-align-center"><strong><span class="swl-inline-color has-swl-deep-01-color">＼初回72%OFF・在庫残りわずか／</span></strong></p>
 
-<div class="swell-block-button green_ is-style-btn_shiny" style="--the-width:95%">
-  <a href="mcv1.html" class="swell-block-button__link"><span>公式サイトで詳しく見る</span></a>
-</div>
+<figure class="wp-block-image size-full" style="text-align:center;"><a href="#"><img src="img/sakamoto_17.webp" alt="今すぐお試し" style="width:100%;display:inline-block;"></a></figure>
 
 <!-- ===== Section 7: 2位・3位 ===== -->
-<figure class="wp-block-image size-full" style="margin-bottom:15px;"><img src="img/heading_08_2nd3rd_final.png" alt="2位・3位もチェック" style="width:100%;"></figure>
 
-<h3>2位 アリナミンメディカルゴールド（105錠）</h3>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_28.webp" alt="アリナミンメディカルゴールド" style="width:100%;"></figure>
 
 <figure class="wp-block-image size-full" style="max-width:300px;margin:0 auto;"><img src="img/product_alinamin.jpg" alt="アリナミンメディカルゴールド" style="width:100%;"></figure>
 
@@ -695,7 +735,7 @@
 
 <p class="has-text-align-center"><a href="https://alinamin.jp/lineup/alinaminmedicalgold.html" target="_blank" rel="noopener noreferrer">アリナミンメディカルゴールドの詳細を見る</a></p>
 
-<h3>3位 シビリトル</h3>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_29.webp" alt="シビリトル" style="width:100%;"></figure>
 
 <figure class="wp-block-image size-full" style="max-width:300px;margin:0 auto;"><img src="img/product_sibiritoru.jpg" alt="シビリトル" style="width:100%;"></figure>
 
@@ -712,7 +752,7 @@
 <div class="swell-block-capbox cap_box" data-colset="col1"><div class="cap_box_ttl"><span><strong><span class="swl-fz u-fz-l">マシにはなったけど、もう一歩ほしい</span></strong></span></div><div class="cap_box_content">
 <p>70歳男性</p>
 
-<p>足のしびれ対策に<br>3ヶ月ほど飲みました。<br>少しマシになった気はしますが、<br>正直もう一歩という感じ。<br>あとから成分を見たら<br>血流改善の成分までは<br>入っていないと知り、<br>次はそこまでカバーしてくれる<br>医薬品を試そうかなと<br>思っています。</p>
+<p>足のしびれ対策に<br>3ヶ月ほど飲みました。<br>少しマシになった気はしますが、<br>正直もう一歩という感じ。<br>悪くはないんですが、<br>もう少し実感がほしいなと<br>思っていて、<br>他の医薬品も気になっている<br>ところです。</p>
 
 <p class="has-text-align-right"><span style="font-size:10px" class="swl-fz">※個人の感想であり効能効果を保証するものではありません。</span></p>
 </div></div>
@@ -720,7 +760,7 @@
 <p class="has-text-align-center"><a href="https://nr-t.jp/product/cause-six-sibiritoru/" target="_blank" rel="noopener noreferrer">シビリトルの詳細を見る</a></p>
 
 <!-- ===== Section 8: 迷ったら ===== -->
-<figure class="wp-block-image size-full" style="margin-bottom:15px;"><img src="img/heading_09_mayottara_final.png" alt="迷ったら、ラクーダEXα" style="width:100%;"></figure>
+<figure class="wp-block-image size-full full-bleed" style="margin-bottom:15px;"><img src="img/sakamoto_30.webp" alt="迷ったら、ラクーダEXα" style="width:100%;"></figure>
 
 <p>ここまで読んで、<br>「ちょっと試してみようかな」<br>と思ったなら、まずは1ヶ月。<br><br><span class="swl-marker mark_yellow" style="background-size: 100% 100%;"><strong>初回1,980円、返金保証付き</strong></span>。<br>合わなければお金は戻ってきます。</p>
 
@@ -728,9 +768,7 @@
 
 <p class="has-text-align-center"><strong><span class="swl-inline-color has-swl-deep-01-color">＼初回72%OFF・30日間返金保証付き／</span></strong></p>
 
-<div class="swell-block-button green_ is-style-btn_shiny" style="--the-width:95%">
-  <a href="mcv1.html" class="swell-block-button__link"><span>公式サイトで詳しく見る</span></a>
-</div>
+<figure class="wp-block-image size-full" style="text-align:center;"><a href="#"><img src="img/sakamoto_17.webp" alt="今すぐお試し" style="width:100%;display:inline-block;"></a></figure>
 
 <!-- ===== 関連記事 ===== -->
 <div class="related-section">
@@ -756,6 +794,16 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // Auto-update dates to today
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = now.getMonth() + 1;
+  const d = now.getDate();
+  const dateEl = document.getElementById("js-update-date");
+  if (dateEl) dateEl.textContent = y + "年" + m + "月" + d + "日更新";
+  const urgencyEl = document.getElementById("js-urgency-date");
+  if (urgencyEl) urgencyEl.textContent = "【" + y + "年" + m + "月" + d + "日追記】";
+
   // Split markers containing <br> into separate spans for staggered animation
   document.querySelectorAll(".swl-marker").forEach(marker => {
     if (!marker.querySelector("br")) return;
